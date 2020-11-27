@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "629524689124",
+    "firebase_url": "https://taskmanager-af032.firebaseio.com",
+    "project_id": "taskmanager-af032",
+    "storage_bucket": "taskmanager-af032.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629524689124:android:427915a4a83db5bacbfcf1",
+        "android_client_info": {
+          "package_name": "com.olemika.taskmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629524689124-koee56dndl74omr87u35sr5bv59f9a3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmbk4W7GNrI5CZ_YjlSzybFPrAhoSHGXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629524689124-koee56dndl74omr87u35sr5bv59f9a3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
