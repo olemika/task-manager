@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddCategoryActivity.class);
-                MainActivity.this.finish();
                 startActivity(intent);
+                MainActivity.this.finish();
             }
         });
 
@@ -76,5 +76,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onBackPressed() {
+        //ничего не делать??
+    }
 }

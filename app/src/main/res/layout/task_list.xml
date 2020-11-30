@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:background="@drawable/layout_radius_blue"
-    android:padding="10dp"
+    android:padding="22dp"
     android:id="@+id/task_parent"
     android:layout_marginBottom="16dp"
     android:orientation="horizontal"

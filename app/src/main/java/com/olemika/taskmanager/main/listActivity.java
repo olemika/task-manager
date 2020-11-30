@@ -47,6 +47,7 @@ public class listActivity extends AppCompatActivity  {
                 Intent intent = new Intent(listActivity.this, addTaskActivity.class);
                 intent.putExtra("GroupId", groupId);
                 startActivity(intent);
+                listActivity.this.finish();
             }
         });
 
@@ -62,6 +63,13 @@ public class listActivity extends AppCompatActivity  {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
             }
 
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(listActivity.this, MainActivity.class);
+        startActivity(intent);
+        listActivity.this.finish();
     }
 
+}
 

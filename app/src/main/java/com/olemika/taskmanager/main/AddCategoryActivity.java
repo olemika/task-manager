@@ -18,14 +18,11 @@ public class AddCategoryActivity extends AppCompatActivity {
     AppDatabase db = App.getInstance().getDatabase();
     public GroupDao gDao = db.groupDao();
 
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_category_activity);
-
-
-
-
 
 
         editText = (TextInputEditText) findViewById(R.id.category_add_edit_text);
@@ -44,6 +41,13 @@ public class AddCategoryActivity extends AppCompatActivity {
                 AddCategoryActivity.this.finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(AddCategoryActivity.this, MainActivity.class);
+        startActivity(intent);
+        AddCategoryActivity.this.finish();
     }
 
 

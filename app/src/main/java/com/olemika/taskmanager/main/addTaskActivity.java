@@ -54,6 +54,14 @@ public class addTaskActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(addTaskActivity.this, listActivity.class);
+        intent.putExtra("GroupId", groupId);
+        startActivity(intent);
+        addTaskActivity.this.finish();
+    }
+
 
 
 }
