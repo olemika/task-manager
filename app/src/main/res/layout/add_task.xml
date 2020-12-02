@@ -8,7 +8,16 @@
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".main.addTaskActivity"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical|center_horizontal">
+
+    <TextView
+        android:id="@+id/text_add_to_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="esrtfd"
+        android:textColor="#62757f"
+        android:textSize="15sp"
+        android:layout_marginBottom="20dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -23,7 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textSize="30sp" />
+        android:textSize="20sp"
+        android:textColor="#62757f"
+        android:layout_marginBottom="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/task_recycler"
@@ -31,7 +33,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="16dp"
-        tools:listitem="@layout/task_list" />
+        tools:listitem="@layout/task_list"
+        android:scrollbars="vertical"/>
 
     <Button
         android:id="@+id/add_button_task"

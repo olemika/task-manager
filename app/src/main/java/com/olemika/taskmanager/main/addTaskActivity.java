@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import com.olemika.taskmanager.R;
 public class addTaskActivity extends AppCompatActivity {
     private static final String TAG = "addTaskActivity";
     private long groupId;
+    TextView textView;
     private TextInputEditText editText;
     private String newTask;
     private Button buttonAdd;
@@ -32,7 +34,8 @@ public class addTaskActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: get extras from list Activity " + gDao.getById(groupId).getName());
 
         editText = (TextInputEditText) findViewById(R.id.task_add_edit_text);
-
+        textView = (TextView) findViewById(R.id.text_add_to_group);
+        textView.setText(gDao.getById(groupId).getName());
 
         buttonAdd = (Button) findViewById(R.id.task_add_button);
         buttonAdd.setOnClickListener(new View.OnClickListener() {

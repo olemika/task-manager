@@ -51,6 +51,7 @@ public class listActivity extends AppCompatActivity  {
             attention.setVisibility(View.VISIBLE);
             title.setVisibility(View.GONE);
             recyclerView.setVisibility(View.GONE);
+            title.setVisibility(View.GONE);
             attention.setText("Сейчас нет ни одной задачи в категории " + gDao.getById(groupId).getName());
 
         } else {

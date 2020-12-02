@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
     android:background="@drawable/layout_radius"
     android:padding="22dp"
     android:id="@+id/task_parent"
@@ -17,10 +18,11 @@
         android:layout_height="match_parent"
         android:textSize="20sp"
         android:layout_weight="4"
+        android:paddingLeft="16dp"
         android:textColor="@color/primaryTextColor"
-        android:textStyle="italic"
-        android:text="ekksdfksdfkskl"
-        android:gravity="center" />
+        android:text="ekksdfksdfk dskdfkj"
+        android:gravity="center"
+         />
 
     <ImageButton
         android:id="@+id/task_delete_button"
