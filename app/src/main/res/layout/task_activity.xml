@@ -4,16 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:gravity="center"
+    android:paddingTop="16dp"
     android:layout_height="match_parent"
     tools:context=".main.listActivity">
 
+    <TextView
+        android:id="@+id/task_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="24sp"
+        android:layout_weight="0"/>
+    <TextView
+        android:id="@+id/no_task_attention"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="30sp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        tools:listitem="@layout/task_list"
         android:id="@+id/task_recycler"
         android:layout_width="match_parent"
-        android:padding="16dp"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:padding="16dp"
+        tools:listitem="@layout/task_list" />
 
     <Button
         android:id="@+id/add_button_task"
@@ -22,6 +40,7 @@
         android:layout_margin="20dp"
         android:layout_weight="0"
         android:text="Добавить задачу"
-        app:backgroundTint="@color/primaryDarkColor" />
+        android:textColor="@color/secondaryTextColor"
+        app:backgroundTint="@color/secondaryColor" />
 
 </LinearLayout>

@@ -16,7 +16,9 @@
         app:counterMaxLength="140"
         android:hint="Задача"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:hintAnimationEnabled="true">
+        app:hintAnimationEnabled="true"
+        app:counterTextColor="@color/secondaryTextColor"
+        android:textColorHint="@color/primaryDarkColor">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/task_add_edit_text"
@@ -28,12 +30,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-
+        android:focusedByDefault="true"
         android:id="@+id/task_add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        app:backgroundTint="@color/primaryDarkColor"
+        app:backgroundTint="@color/secondaryColor"
+        android:textColor="@color/secondaryTextColor"
         android:text="Добавить задачу"/>
 
 </LinearLayout>

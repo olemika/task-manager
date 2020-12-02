@@ -6,10 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,7 +32,7 @@ public class taskAdapter extends RecyclerView.Adapter<taskAdapter.taskViewHolder
     }
 
     public static class taskViewHolder extends RecyclerView.ViewHolder {
-        TextView taskText;
+        CheckBox taskText;
         ImageButton dltButton;
         LinearLayout parentLayout;
 
@@ -55,22 +54,23 @@ public class taskAdapter extends RecyclerView.Adapter<taskAdapter.taskViewHolder
     @Override
     public void onBindViewHolder(taskViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
-        holder.taskText.setText((mTask.get(position)).getTaskName());
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on " + mTask.get(position).getTaskName());
-                Toast.makeText(mContext, mTask.get(position).getTaskName(), Toast.LENGTH_SHORT).show();
+        holder.taskText.setText(mTask.get(position).getTaskName());
+        holder.taskText.setChecked(mTask.get(position).getDone());
+        Log.d(TAG, "onBindViewHolder: set checked " + mTask.get(position).getDone());
+        holder.taskText.setOnClickListener(v -> {
+            if (mTask.get(position).getDone() == false) {
+                mTask.get(position).setDone(true);
+                tDao.update(mTask.get(position));
+            } else {
+                mTask.get(position).setDone(false);
+                tDao.update(mTask.get(position));
             }
         });
-        holder.dltButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tDao.delete(mTask.get(position));
-                Intent intent = new Intent(mContext, listActivity.class);
-                intent.putExtra("GroupId", (mTask.get(position)).getGroupId());
-                mContext.startActivity(intent);
-            }
+        holder.dltButton.setOnClickListener(v -> {
+            tDao.delete(mTask.get(position));
+            Intent intent = new Intent(mContext, listActivity.class);
+            intent.putExtra("GroupId", (mTask.get(position)).getGroupId());
+            mContext.startActivity(intent);
         });
 
     }

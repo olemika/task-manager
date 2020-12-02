@@ -41,6 +41,8 @@ public class AddCategoryActivity extends AppCompatActivity {
                 AddCategoryActivity.this.finish();
             }
         });
+
+
     }
 
     @Override

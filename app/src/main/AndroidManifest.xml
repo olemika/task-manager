@@ -21,13 +21,15 @@
         </activity>
         <activity android:name=".main.listActivity"
             android:label="Напоминания"
-            android:parentActivityName=".main.MainActivity"/>
+            android:parentActivityName=".main.MainActivity" />
         <activity android:name=".main.addTaskActivity"
             android:label="Добавить напоминание"
-            android:parentActivityName=".main.listActivity"/>
+            android:parentActivityName=".main.listActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".main.AddCategoryActivity"
             android:label="Добавить категорию"
-            android:parentActivityName=".main.MainActivity"/>
+            android:parentActivityName=".main.MainActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
     </application>
 

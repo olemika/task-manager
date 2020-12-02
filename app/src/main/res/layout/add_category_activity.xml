@@ -10,39 +10,36 @@
     tools:context=".main.AddCategoryActivity"
     android:gravity="center_vertical">
 
-    <com.vanniktech.emoji.EmojiEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:hint="Эмодзи категории" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:counterEnabled="true"
-        app:counterMaxLength="140"
-        android:hint="Имя новой категории"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:hintAnimationEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/category_add_edit_text"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true" />
+            app:counterEnabled="true"
+            app:counterMaxLength="140"
+            android:hint="Имя новой категории"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:counterTextColor="@color/secondaryTextColor"
+            android:textColorHint="@color/primaryDarkColor"
+            app:hintAnimationEnabled="true">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/category_add_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+        <Button
+            android:focusedByDefault="true"
+            android:id="@+id/category_add_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            app:backgroundTint="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"
+            android:text="Добавить категорию"/>
 
-        android:id="@+id/category_add_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        app:backgroundTint="@color/primaryDarkColor"
-        android:text="Добавить категорию"/>
 
 </LinearLayout>

@@ -19,6 +19,12 @@ public interface TaskDao {
     @Query("SELECT * FROM task WHERE groupId = :groupId")
     List<Task> getByGroupId(long groupId);
 
+    @Query("SELECT COUNT(*) FROM task WHERE groupId = :groupId")
+    int getCountByGroupId(long groupId);
+
+    @Query("SELECT COUNT(*) FROM task WHERE groupId = :groupId AND isDone = 1")
+    int getCountCheckedByGroupId(long groupId);
+
     @Insert
     void insert(Task task);
 

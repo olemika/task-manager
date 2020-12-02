@@ -4,9 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="16dp"
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
+
+    <TextView
+        android:id="@+id/no_category_attention"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/no_any_category"
+        android:textSize="30sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         tools:listitem="@layout/main_list"
@@ -16,9 +26,9 @@
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/add_category_btn"
-        android:backgroundTint="@color/primaryDarkColor"
-        android:textColor="@color/primaryTextColor"
+        android:backgroundTint="@color/secondaryColor"
         android:layout_width="match_parent"
+        android:textColor="@color/secondaryTextColor"
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:text="@string/add_category"/>

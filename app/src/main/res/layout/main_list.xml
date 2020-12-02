@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:id="@+id/parent_layout"
     android:padding="10dp"
     android:layout_marginTop="10dp"
-    android:gravity="center_vertical"
+    android:gravity="center"
     android:background="@drawable/layout_radius"
     android:layout_height="150dp">
 
-    <ImageView
-        android:id="@+id/main_image"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:src="@drawable/work"
-        android:scaleType="centerInside"
-        android:layout_height="match_parent"/>
-    <TextView
-        android:id="@+id/main_text"
-        android:layout_width="0dp"
-        android:layout_weight="3"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        android:layout_height="match_parent"
-        android:textColor="@color/primaryTextColor"
-        android:text="example"
-        android:textSize="30sp"
-        android:layout_marginLeft="16dp"
-        android:gravity="center_vertical"/>
-
-    <ImageButton
-        android:id="@+id/btn_delete_category"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
-        android:background="@color/secondaryColor"
-        app:srcCompat="@drawable/outline_delete_black_18dp" />
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/main_text"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_height="match_parent"
+            android:textColor="@color/primaryTextColor"
+            android:text="example"
+            android:textSize="30sp"
+            android:gravity="center_horizontal|center_vertical" />
+
+        <ImageButton
+            android:id="@+id/btn_delete_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:background="@null"
+            app:srcCompat="@drawable/outline_delete_black_18dp" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/text_progress"
+        android:layout_width="wrap_content"
+        android:textColor="#607d8b"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_height="wrap_content"
+        android:text="10/16" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/CustomProgressBarHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:progress="20" />
 
 
 </LinearLayout>
