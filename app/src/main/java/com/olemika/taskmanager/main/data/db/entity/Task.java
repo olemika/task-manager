@@ -1,9 +1,8 @@
-package com.olemika.taskmanager.main;
+package com.olemika.taskmanager.main.data.db.entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
 
 
 @Entity(foreignKeys = @ForeignKey(entity = Group.class, parentColumns = "id", childColumns = "groupId",  onDelete = ForeignKey.CASCADE))

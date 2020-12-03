@@ -1,9 +1,11 @@
-package com.olemika.taskmanager.main;
+package com.olemika.taskmanager.main.data.db.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.olemika.taskmanager.main.data.db.entity.Group;
 
 import java.util.List;
 

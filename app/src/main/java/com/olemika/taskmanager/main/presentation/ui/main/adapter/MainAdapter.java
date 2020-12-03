@@ -1,7 +1,6 @@
-package com.olemika.taskmanager.main;
+package com.olemika.taskmanager.main.presentation.ui.main.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,33 +13,40 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.olemika.taskmanager.R;
+import com.olemika.taskmanager.main.App;
+import com.olemika.taskmanager.main.data.db.AppDatabase;
+import com.olemika.taskmanager.main.data.db.entity.Group;
+import com.olemika.taskmanager.main.data.db.dao.TaskDao;
+import com.olemika.taskmanager.main.presentation.ui.utils.AdapterClickListener;
 
 import java.util.List;
 
 
-public class mainAdapter extends RecyclerView.Adapter<mainAdapter.mainViewHolder> {
+
+
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
     private static final String TAG = "mainAdapter";
 
     AppDatabase db = App.getInstance().getDatabase();
-    public GroupDao gDao =  db.groupDao();
     TaskDao tDao = db.taskDao();
-
+    private AdapterClickListener<Group> clickListener;
     private Context mContext;
     private List<Group> mGroups;
 
-    public mainAdapter(Context mContext, List<Group> mGroups) {
+    public MainAdapter(Context mContext, List<Group> mGroups, AdapterClickListener<Group> clickListener) {
         this.mContext = mContext;
         this.mGroups = mGroups;
+        this.clickListener = clickListener;
     }
 
-    public static class  mainViewHolder extends RecyclerView.ViewHolder {
+    public class MainViewHolder extends RecyclerView.ViewHolder {
         TextView mainText;
         TextView progressText;
         LinearLayout parentLayout;
         ImageButton dltCategory;
         ProgressBar progressBar;
 
-        public mainViewHolder(View itemView) {
+        public MainViewHolder(View itemView) {
             super(itemView);
             this.mainText = itemView.findViewById(R.id.main_text);
             this.parentLayout = itemView.findViewById(R.id.parent_layout);
@@ -51,32 +57,46 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.mainViewHolder
     }
 
     @Override
-    public mainViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MainViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_list, parent, false);
-        mainViewHolder holder = new mainViewHolder(view);
-        return holder;
+//        MainViewHolder holder = new MainViewHolder(view);
+        return new MainViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(mainViewHolder holder, int position) {
+    public void onBindViewHolder(MainViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
-        holder.mainText.setText(mGroups.get(position).getName());
+        //init item
+        Group group = (mGroups.get(position));
+        holder.mainText.setText(group.getName());
         holder.dltCategory.setOnClickListener(v -> {
-            gDao.delete(mGroups.get(position));
-            Intent intent = new Intent(mContext, MainActivity.class);
-            mContext.startActivity(intent);
+            clickListener.onDelete(group);
+//            gDao.delete(group);
+//            Intent intent = new Intent(mContext, MainActivity.class);
+//            mContext.startActivity(intent);
         });
-        holder.parentLayout.setOnClickListener(v -> {
+        holder.itemView.setOnClickListener(v -> {
             Log.d(TAG, "onClick: clicked on " + mGroups.get(position).getName());
-            Intent intent = new Intent(mContext, listActivity.class);
-            intent.putExtra("GroupId", (mGroups.get(position)).getId());
-            mContext.startActivity(intent);
+            clickListener.onClick(group);
+//            Intent intent = new Intent(mContext, listActivity.class);
+//            intent.putExtra("GroupId", (mGroups.get(position)).getId());
+//            mContext.startActivity(intent);
 
         });
         holder.progressBar.setMax(tDao.getCountByGroupId(mGroups.get(position).getId()));
         holder.progressBar.setProgress(tDao.getCountCheckedByGroupId(mGroups.get(position).getId()));
         holder.progressText.setText(tDao.getCountCheckedByGroupId(mGroups.get(position).getId()) + "/" + tDao.getCountByGroupId(mGroups.get(position).getId()));
+    }
+
+    public void addGroup(Group group){
+        mGroups.add(0, group);
+        notifyItemInserted(0);
+    }
+
+    public void deleteGroup(Group group){
+        mGroups.remove(group);
+        notifyDataSetChanged();
     }
 
 

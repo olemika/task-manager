@@ -9,6 +9,7 @@ import androidx.emoji.text.FontRequestEmojiCompatConfig;
 import androidx.room.Room;
 
 import com.olemika.taskmanager.R;
+import com.olemika.taskmanager.main.data.db.AppDatabase;
 
 public class App extends Application {
     private static final String TAG = "App";

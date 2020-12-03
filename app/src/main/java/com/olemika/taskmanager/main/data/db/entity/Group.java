@@ -1,4 +1,4 @@
-package com.olemika.taskmanager.main;
+package com.olemika.taskmanager.main.data.db.entity;
 
 import androidx.room.Entity;
 import androidx.room.Index;

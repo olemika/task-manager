@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".main.AddCategoryActivity"
+    tools:context=".main.presentation.ui.main.add.AddCategoryActivity"
     android:gravity="center_vertical">
 
         <com.google.android.material.textfield.TextInputLayout

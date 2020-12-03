@@ -1,6 +1,5 @@
-package com.olemika.taskmanager.main;
+package com.olemika.taskmanager.main.presentation.ui.task.add;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,8 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.olemika.taskmanager.R;
+import com.olemika.taskmanager.main.App;
+import com.olemika.taskmanager.main.data.db.AppDatabase;
+import com.olemika.taskmanager.main.data.db.dao.GroupDao;
+import com.olemika.taskmanager.main.data.db.entity.Task;
+import com.olemika.taskmanager.main.data.db.dao.TaskDao;
 
-public class addTaskActivity extends AppCompatActivity {
+public class AddTaskActivity extends AppCompatActivity {
     private static final String TAG = "addTaskActivity";
     private long groupId;
     TextView textView;
@@ -20,10 +24,9 @@ public class addTaskActivity extends AppCompatActivity {
     private String newTask;
     private Button buttonAdd;
 
-
     AppDatabase db = App.getInstance().getDatabase();
     public GroupDao gDao = db.groupDao();
-    public TaskDao tDao =  db.taskDao();
+    public TaskDao tDao = db.taskDao();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,23 +51,22 @@ public class addTaskActivity extends AppCompatActivity {
                 tDao.insert(task);
                 Log.d(TAG, "Add new instance to Tasks = " + task);
 
-                Intent intent = new Intent(addTaskActivity.this, listActivity.class);
-                intent.putExtra("GroupId", groupId);
-
-                startActivity(intent);
-                addTaskActivity.this.finish();
+//                Intent intent = new Intent(AddTaskActivity.this, listActivity.class);
+//                intent.putExtra("GroupId", groupId);
+//                startActivity(intent);
+                AddTaskActivity.this.finish();
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(addTaskActivity.this, listActivity.class);
-        intent.putExtra("GroupId", groupId);
-        startActivity(intent);
-        addTaskActivity.this.finish();
+//        Intent intent = new Intent(AddTaskActivity.this, listActivity.class);
+//        intent.putExtra("GroupId", groupId);
+//        startActivity(intent);
+//        AddTaskActivity.this.finish();
+        super.onBackPressed();
     }
-
 
 
 }

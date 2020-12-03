@@ -7,7 +7,7 @@
     android:gravity="center"
     android:padding="16dp"
     android:layout_height="match_parent"
-    tools:context=".main.MainActivity">
+    tools:context=".main.presentation.ui.main.MainActivity">
 
     <TextView
         android:id="@+id/no_category_attention"

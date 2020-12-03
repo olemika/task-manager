@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".main.addTaskActivity"
+    tools:context=".main.presentation.ui.task.add.AddTaskActivity"
     android:gravity="center_vertical|center_horizontal">
 
     <TextView
@@ -33,9 +33,9 @@
             android:id="@+id/task_add_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true" />
+            android:maxLength="140"
+            android:imeOptions="actionDone"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

@@ -1,7 +1,6 @@
-package com.olemika.taskmanager.main;
+package com.olemika.taskmanager.main.presentation.ui.task.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,22 +12,29 @@ import android.widget.LinearLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.olemika.taskmanager.R;
+import com.olemika.taskmanager.main.App;
+import com.olemika.taskmanager.main.data.db.AppDatabase;
+import com.olemika.taskmanager.main.data.db.entity.Task;
+import com.olemika.taskmanager.main.data.db.dao.TaskDao;
+import com.olemika.taskmanager.main.presentation.ui.utils.AdapterClickListener;
 
 import java.util.List;
 
-public class taskAdapter extends RecyclerView.Adapter<taskAdapter.taskViewHolder>{
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.taskViewHolder>{
     private static final String TAG = "taskAdapter";
 
     private Context mContext;
-    private List<Task> mTask;
-
+    public List<Task> mTask;
+    private AdapterClickListener<Task> clickListener;
 
     AppDatabase db = App.getInstance().getDatabase();
     public TaskDao tDao =  db.taskDao();
 
-    public taskAdapter(Context mContext, List<Task> mTask) {
+
+    public TaskAdapter(Context mContext, List<Task> mTask, AdapterClickListener<Task> clickListener) {
         this.mContext = mContext;
         this.mTask = mTask;
+        this.clickListener = clickListener;
     }
 
     public static class taskViewHolder extends RecyclerView.ViewHolder {
@@ -58,19 +64,20 @@ public class taskAdapter extends RecyclerView.Adapter<taskAdapter.taskViewHolder
         holder.taskText.setChecked(mTask.get(position).getDone());
         Log.d(TAG, "onBindViewHolder: set checked " + mTask.get(position).getDone());
         holder.taskText.setOnClickListener(v -> {
-            if (mTask.get(position).getDone() == false) {
-                mTask.get(position).setDone(true);
-                tDao.update(mTask.get(position));
-            } else {
-                mTask.get(position).setDone(false);
-                tDao.update(mTask.get(position));
-            }
+            clickListener.onClick(mTask.get(position));
+//            if (!mTask.get(position).getDone()) {
+//                mTask.get(position).setDone(true);
+//            } else {
+//                mTask.get(position).setDone(false);
+//            }
+//            tDao.update(mTask.get(position));
         });
         holder.dltButton.setOnClickListener(v -> {
-            tDao.delete(mTask.get(position));
-            Intent intent = new Intent(mContext, listActivity.class);
-            intent.putExtra("GroupId", (mTask.get(position)).getGroupId());
-            mContext.startActivity(intent);
+            clickListener.onDelete(mTask.get(position));
+//            tDao.delete(mTask.get(position));
+//            Intent intent = new Intent(mContext, listActivity.class);
+//            intent.putExtra("GroupId", (mTask.get(position)).getGroupId());
+//            mContext.startActivity(intent);
         });
 
     }
@@ -78,6 +85,12 @@ public class taskAdapter extends RecyclerView.Adapter<taskAdapter.taskViewHolder
     @Override
     public int getItemCount() {
         return mTask.size();
+    }
+
+    public void update(List<Task> newList){
+        mTask = newList;
+//        notifyDataSetChanged();
+
     }
 }
 

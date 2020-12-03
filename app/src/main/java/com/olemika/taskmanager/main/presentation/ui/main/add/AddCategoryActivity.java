@@ -1,4 +1,4 @@
-package com.olemika.taskmanager.main;
+package com.olemika.taskmanager.main.presentation.ui.main.add;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.olemika.taskmanager.R;
+import com.olemika.taskmanager.main.App;
+import com.olemika.taskmanager.main.data.db.AppDatabase;
+import com.olemika.taskmanager.main.data.db.entity.Group;
+import com.olemika.taskmanager.main.data.db.dao.GroupDao;
+import com.olemika.taskmanager.main.presentation.ui.main.MainActivity;
 
 public class AddCategoryActivity extends AppCompatActivity {
 
@@ -18,12 +23,10 @@ public class AddCategoryActivity extends AppCompatActivity {
     AppDatabase db = App.getInstance().getDatabase();
     public GroupDao gDao = db.groupDao();
 
-
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_category_activity);
-
 
         editText = (TextInputEditText) findViewById(R.id.category_add_edit_text);
         buttonAdd = (Button) findViewById(R.id.category_add_button);
@@ -35,22 +38,15 @@ public class AddCategoryActivity extends AppCompatActivity {
                 Group group = new Group(newCategory);
                 gDao.insert(group);
 
-
                 Intent intent = new Intent(AddCategoryActivity.this, MainActivity.class);
+//                intent.addFlags()
                 startActivity(intent);
-                AddCategoryActivity.this.finish();
             }
         });
-
-
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(AddCategoryActivity.this, MainActivity.class);
-        startActivity(intent);
-        AddCategoryActivity.this.finish();
+        super.onBackPressed();
     }
-
-
 }

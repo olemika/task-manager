@@ -11,23 +11,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskManager">
 
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".main.presentation.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.listActivity"
+        <activity android:name=".main.presentation.ui.task.ListActivity"
             android:label="Напоминания"
-            android:parentActivityName=".main.MainActivity" />
-        <activity android:name=".main.addTaskActivity"
+            android:parentActivityName=".main.presentation.ui.main.MainActivity" />
+        <activity android:name=".main.presentation.ui.task.add.AddTaskActivity"
             android:label="Добавить напоминание"
-            android:parentActivityName=".main.listActivity"
+            android:parentActivityName=".main.presentation.ui.task.ListActivity"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".main.AddCategoryActivity"
+        <activity android:name=".main.presentation.ui.main.add.AddCategoryActivity"
             android:label="Добавить категорию"
-            android:parentActivityName=".main.MainActivity"
+            android:parentActivityName=".main.presentation.ui.main.MainActivity"
             android:windowSoftInputMode="adjustResize"/>
 
     </application>
